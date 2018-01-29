@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Cards.css";
-import {Card, CardActions, CardHeader, CardText, FlatButton, CardMedia, CardTitle} from 'material-ui';
+import {Card, CardActions, CardText, FlatButton, CardMedia, CardTitle} from 'material-ui';
 
 const Cards = (props) => (
   <Card className="custom-card">
