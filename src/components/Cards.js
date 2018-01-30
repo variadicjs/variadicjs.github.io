@@ -9,7 +9,8 @@ const Cards = (props) => (
     </CardMedia>
     <CardTitle title={props.demoNumber} subtitle={props.subtitle} />
     <CardActions>
-      <FlatButton label="Action1" />
+      {/* TODO: FIGURE OUT HOW WE'LL GET THE INPUT VALUES */}
+      <FlatButton label="Action1" onClick={(e) => props.onClickHandler(props.demoNumber,[2,4,4], e)}/>
       <FlatButton label="Action2" />
     </CardActions>
     <CardText expandable={true}>
