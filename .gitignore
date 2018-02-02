@@ -5,8 +5,17 @@ node_modules
 .grunt
 _SpecRunner.html
 __benchmarks__
-build/
 remote-repo/
+
+# Build
+build/
+static/
+asset-manifest.json
+manifest.json
+service-worker.js
+favicon.ico
+index.html
+
 coverage/
 flow-coverage/
 .module-cache
@@ -22,3 +31,4 @@ chrome-user-data
 .vscode
 *.swp
 *.swo
+
