@@ -99,7 +99,6 @@ class Cards extends Component {
               null
             }
         </CardText>
-      
       </Card>
     )
   }
