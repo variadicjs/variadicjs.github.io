@@ -12,7 +12,6 @@ class Main extends Component {
       demoTitle: [],
       result: "",
       currentFunc: ""
-
     };
   }
 

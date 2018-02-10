@@ -92,15 +92,12 @@ class Cards extends Component {
           <FlatButton label="See code" />
         </CardActions>
         <CardText>
-            
             {//Only showing result for function user is on
               demoTitle === currentFunc? 
               `${cardText}: ${result}`
               :
               null
             }
-          
-          
         </CardText>
       
       </Card>
