@@ -9,17 +9,31 @@ class Main extends Component {
     //Content will change once data gets decided
     this.state = {
       cardText: "Results",
-      subtitle: "Subtitle if needed",
-      demoNumber: ["isEven", "Demo 2", "Demo 3", "Demo 4"]
+      subtitle: "Type numbers to test function",
+      demoTitle: [],
+      data: ""
     };
+  }
+
+  componentDidMount(){
+    //get all current functions in variadic and set their titles to state
+    let funcTitles = []
+
+    for(let i in variadic){
+      funcTitles.push(i)
+    }
+
+    this.setState({demoTitle: Object.values(funcTitles)})
   }
 
   handleClick = (func, params, e) => {
     // TODO: DO SOMETHING WITH THE OUTPUT
+    // console.log(func, params, e)
     if(func in variadic) console.log(variadic[func].apply(this,params));
   }
 
   render() {
+    console.log(this.state)
     const flexContainer = {
       marginTop: "20px",
       display: "flex",
@@ -27,12 +41,12 @@ class Main extends Component {
       flexWrap: "wrap"
     }
 
-    const {cardText, subtitle, demoNumber} = this.state;
+    const {cardText, subtitle, demoTitle} = this.state;
     
-    let demoCard = demoNumber.map((number, i) => (
+    let demoCard = demoTitle.map((title, i) => (
         <Cards
           key={i} 
-          demoNumber={number} 
+          demoTitle={title} 
           cardText={cardText}
           subtitle={subtitle}
           onClickHandler={this.handleClick} 
