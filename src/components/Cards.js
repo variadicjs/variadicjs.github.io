@@ -5,7 +5,6 @@ import {
   CardActions, 
   CardText, 
   FlatButton, 
-  CardMedia, 
   CardTitle,
   TextField
 } from 'material-ui';
@@ -31,7 +30,7 @@ class Cards extends Component {
         case "textbox2":
              this.setState({value2: userInput})
           break
-        case "textbox3": "value", 
+        case "textbox3": 
              this.setState({value3: userInput})
           break;
         default:
@@ -41,7 +40,7 @@ class Cards extends Component {
 
     //Regex to only allow numbers
     const re = /^[0-9\b]+$/;
-    if (e.target.value == '' || re.test(e.target.value)) {
+    if (e.target.value === "" || re.test(e.target.value)) {
       //Can change to <= 3 to account for 3 digit numbers
       if(e.target.value.length <= 2){
         verifyTextBox(e.target.value, e.target.id);
