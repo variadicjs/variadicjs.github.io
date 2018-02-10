@@ -50,10 +50,8 @@ class Cards extends Component {
   }
 
   render() {
-
     const {demoTitle, onClickHandler, cardText, subtitle} = this.props;
     const {value1, value2, value3} = this.state;
-    console.log(value1, value2, value3)
 
     return (
       <Card className="custom-card">

@@ -6,7 +6,6 @@ import variadic from 'variadic.js';
 class Main extends Component {
   constructor(props) {
     super(props);
-    //Content will change once data gets decided
     this.state = {
       cardText: "Results",
       subtitle: "Type numbers to test function",
@@ -16,13 +15,12 @@ class Main extends Component {
   }
 
   componentDidMount(){
-    //get all current functions in variadic and set their titles to state
     let funcTitles = []
-
+    //Get all current functions in variadic
     for(let i in variadic){
       funcTitles.push(i)
     }
-
+    //Set their titles to state
     this.setState({demoTitle: Object.values(funcTitles)})
   }
 
@@ -33,7 +31,6 @@ class Main extends Component {
   }
 
   render() {
-    console.log(this.state)
     const flexContainer = {
       marginTop: "20px",
       display: "flex",
