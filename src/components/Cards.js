@@ -65,22 +65,22 @@ class Cards extends Component {
       <Card className="custom-card">
         <CardTitle title={demoTitle} subtitle={subtitle} />
         <TextField
+          className="text-field"
           id="textbox1"
           value={value1}
           onChange={this.handleChange}
-          style={{width: "35px", marginLeft: "20px"}}
         />
         <TextField
+          className="text-field"
           id="textbox2"
           value={value2}
           onChange={this.handleChange}
-          style={{width: "35px", marginLeft: "20px"}}
         />
         <TextField
+          className="text-field"
           id="textbox3"
           value={value3}
           onChange={this.handleChange}
-          style={{width: "35px", marginLeft: "20px"}}
         />
         {/*<CardMedia>
           <img src="https://code.org/images/apple-touch-icon-precomposed.png" alt="" />
