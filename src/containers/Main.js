@@ -10,7 +10,9 @@ class Main extends Component {
       cardText: "Results",
       subtitle: "Type numbers to test function",
       demoTitle: [],
-      data: ""
+      result: "",
+      currentFunc: ""
+
     };
   }
 
@@ -27,7 +29,13 @@ class Main extends Component {
   handleClick = (func, params, e) => {
     // TODO: DO SOMETHING WITH THE OUTPUT
     // console.log(func, params, e)
-    if(func in variadic) console.log(variadic[func].apply(this,params));
+    let result;
+
+    if(func in variadic) {
+     result = variadic[func].apply(this,params);
+    }
+    //Set answer to state
+    this.setState({result: result, currentFunc: func})
   }
 
   render() {
@@ -38,7 +46,13 @@ class Main extends Component {
       flexWrap: "wrap"
     }
 
-    const {cardText, subtitle, demoTitle} = this.state;
+    const {
+      cardText, 
+      subtitle, 
+      demoTitle, 
+      result, 
+      currentFunc
+    } = this.state;
     
     let demoCard = demoTitle.map((title, i) => (
         <Cards
@@ -47,6 +61,8 @@ class Main extends Component {
           cardText={cardText}
           subtitle={subtitle}
           onClickHandler={this.handleClick} 
+          result={result}
+          currentFunc={currentFunc}
         />
     ));
 

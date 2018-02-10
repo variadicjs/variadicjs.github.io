@@ -50,7 +50,15 @@ class Cards extends Component {
   }
 
   render() {
-    const {demoTitle, onClickHandler, cardText, subtitle} = this.props;
+    const {
+      demoTitle, 
+      onClickHandler, 
+      cardText, 
+      subtitle,
+      result,
+      currentFunc
+    } = this.props;
+
     const {value1, value2, value3} = this.state;
 
     return (
@@ -83,9 +91,18 @@ class Cards extends Component {
           <FlatButton label="Run" onClick={(e) => onClickHandler(demoTitle, [value1, value2, value3], e)}/>
           <FlatButton label="See code" />
         </CardActions>
-        <CardText expandable={true}>
-           {cardText}
+        <CardText>
+            
+            {//Only showing result for function user is on
+              demoTitle === currentFunc? 
+              `${cardText}: ${result}`
+              :
+              null
+            }
+          
+          
         </CardText>
+      
       </Card>
     )
   }
