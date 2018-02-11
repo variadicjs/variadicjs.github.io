@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Cards from "../components/Cards";
+import FuncCard from "../components/FuncCard";
 import NavBar from "../components/NavBar";
 import variadic from 'variadic.js';
 
@@ -65,7 +65,7 @@ class CardList extends Component {
     } = this.state;
 
     let demoCard = demoTitle.map((title, i) => (
-        <Cards
+        <FuncCard
           key={i}
           demoTitle={title}
           cardText={cardText}

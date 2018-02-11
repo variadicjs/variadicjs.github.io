@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import "./Cards.css";
+import "./FuncCard.css";
 import {
   Card,
   CardActions,
@@ -9,7 +9,7 @@ import {
   TextField
 } from 'material-ui';
 
-class Cards extends Component {
+class FuncCard extends Component {
    constructor(props) {
     super(props);
       this.state = {
@@ -103,4 +103,4 @@ class Cards extends Component {
   }
 }
 
-export default Cards;
+export default FuncCard;
