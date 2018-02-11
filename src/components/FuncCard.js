@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import "./FuncCard.css";
+import variadic from 'variadic.js';
+import FuncCode from './FuncCode';
 import {
   Card,
   CardActions,
@@ -10,14 +12,32 @@ import {
 } from 'material-ui';
 
 class FuncCard extends Component {
-   constructor(props) {
+  constructor(props) {
     super(props);
-      this.state = {
-        value1: [],
-        value2: [],
-        value3: []
-      };
+    this.state = {
+      value1: [],
+      value2: [],
+      value3: []
+    };
+
+    this.state.showCode = false;
+    this.fetchCode(props.demoTitle);
     this.handleChange = this.handleChange.bind(this);
+    this.handleToggleCode = this.handleToggleCode.bind(this);
+  }
+
+  fetchCode(func) {
+    if(func in variadic) {
+      fetch(`https://raw.githubusercontent.com/variadicjs/variadic.js/develop/lib/${func}.js`).then((response) => {
+        response.text().then((data) => {
+          this.setState({code: data});
+        });
+      })
+    }
+  }
+
+  handleToggleCode(e) {
+    this.setState(prevState => ({showCode: !prevState.showCode}));
   }
 
   handleChange(e) {
@@ -52,7 +72,6 @@ class FuncCard extends Component {
     const {
       demoTitle,
       onClickHandler,
-      onSeeCodeHandler,
       cardText,
       subtitle,
       currentFunc
@@ -88,7 +107,7 @@ class FuncCard extends Component {
           {/* TODO: FIGURE OUT HOW WE'LL GET THE INPUT VALUES */}
         <CardActions>
           <FlatButton label="Run" onClick={(e) => onClickHandler(demoTitle, [value1, value2, value3], e)}/>
-          <FlatButton label="See code" onClick={(e) => onSeeCodeHandler(demoTitle, [value1, value2, value3], e)}/>
+          <FlatButton label={this.state.showCode ? 'Hide Code' : 'Show Code'} onClick={this.handleToggleCode}/>
         </CardActions>
         <CardText>
             {//Only showing result for function user is on
@@ -98,6 +117,7 @@ class FuncCard extends Component {
               null
             }
         </CardText>
+        {(this.state.showCode && <FuncCode code={this.state.code}/>)}
       </Card>
     )
   }
