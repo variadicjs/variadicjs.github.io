@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import "./Cards.css";
 import {
-  Card, 
-  CardActions, 
-  CardText, 
-  FlatButton, 
+  Card,
+  CardActions,
+  CardText,
+  FlatButton,
   CardTitle,
   TextField
 } from 'material-ui';
@@ -30,7 +30,7 @@ class Cards extends Component {
         case "textbox2":
              this.setState({value2: userInput})
           break
-        case "textbox3": 
+        case "textbox3":
              this.setState({value3: userInput})
           break;
         default:
@@ -50,9 +50,9 @@ class Cards extends Component {
 
   render() {
     const {
-      demoTitle, 
-      onClickHandler, 
-      cardText, 
+      demoTitle,
+      onClickHandler,
+      cardText,
       subtitle,
       result,
       currentFunc
@@ -92,8 +92,8 @@ class Cards extends Component {
         </CardActions>
         <CardText>
             {//Only showing result for function user is on
-              demoTitle === currentFunc? 
-              `${cardText}: ${result}`
+              demoTitle === currentFunc?
+              `${cardText}: ${result}` 
               :
               null
             }
@@ -103,4 +103,4 @@ class Cards extends Component {
   }
 }
 
-export default Cards; 
+export default Cards;

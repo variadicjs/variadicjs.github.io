@@ -46,20 +46,20 @@ class Main extends Component {
     }
 
     const {
-      cardText, 
-      subtitle, 
-      demoTitle, 
-      result, 
+      cardText,
+      subtitle,
+      demoTitle,
+      result,
       currentFunc
     } = this.state;
-    
+
     let demoCard = demoTitle.map((title, i) => (
         <Cards
-          key={i} 
-          demoTitle={title} 
+          key={i}
+          demoTitle={title}
           cardText={cardText}
           subtitle={subtitle}
-          onClickHandler={this.handleClick} 
+          onClickHandler={this.handleClick}
           result={result}
           currentFunc={currentFunc}
         />
