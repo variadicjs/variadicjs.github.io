@@ -93,7 +93,7 @@ class Cards extends Component {
         <CardText>
             {//Only showing result for function user is on
               demoTitle === currentFunc?
-              `${cardText}: ${result}` 
+              `${cardText}` 
               :
               null
             }

@@ -34,7 +34,8 @@ class Main extends Component {
      result = variadic[func].apply(this,params);
     }
     //Set answer to state
-    this.setState({result: result, currentFunc: func})
+    let text = `variadic.${func}(${params}) = ${result}`
+    this.setState({cardText: text, result: result, currentFunc: func})
   }
 
   render() {
