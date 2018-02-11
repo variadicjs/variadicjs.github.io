@@ -3,7 +3,7 @@ import Cards from "../components/Cards";
 import NavBar from "../components/NavBar";
 import variadic from 'variadic.js';
 
-class Main extends Component {
+class CardList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -88,4 +88,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default CardList;
