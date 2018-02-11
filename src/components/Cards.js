@@ -52,9 +52,9 @@ class Cards extends Component {
     const {
       demoTitle,
       onClickHandler,
+      onSeeCodeHandler,
       cardText,
       subtitle,
-      result,
       currentFunc
     } = this.props;
 
@@ -88,12 +88,12 @@ class Cards extends Component {
           {/* TODO: FIGURE OUT HOW WE'LL GET THE INPUT VALUES */}
         <CardActions>
           <FlatButton label="Run" onClick={(e) => onClickHandler(demoTitle, [value1, value2, value3], e)}/>
-          <FlatButton label="See code" />
+          <FlatButton label="See code" onClick={(e) => onSeeCodeHandler(demoTitle, [value1, value2, value3], e)}/>
         </CardActions>
         <CardText>
             {//Only showing result for function user is on
               demoTitle === currentFunc?
-              `${cardText}` 
+              `${cardText}`
               :
               null
             }

@@ -38,6 +38,16 @@ class Main extends Component {
     this.setState({cardText: text, result: result, currentFunc: func})
   }
 
+  handleSeeCode = (func, e) => {
+    if(func in variadic) {
+      fetch(`https://raw.githubusercontent.com/variadicjs/variadic.js/develop/lib/${func}.js`).then((response) => {
+        response.text().then((data) => {
+          this.setState({cardText: data, currentFunc: func});
+        });
+      })
+    }
+  }
+
   render() {
     const flexContainer = {
       marginTop: "20px",
@@ -61,6 +71,7 @@ class Main extends Component {
           cardText={cardText}
           subtitle={subtitle}
           onClickHandler={this.handleClick}
+          onSeeCodeHandler={this.handleSeeCode}
           result={result}
           currentFunc={currentFunc}
         />
