@@ -34,7 +34,18 @@ class Main extends Component {
      result = variadic[func].apply(this,params);
     }
     //Set answer to state
-    this.setState({result: result, currentFunc: func})
+    let text = `variadic.${func}(${params}) = ${result}`
+    this.setState({cardText: text, result: result, currentFunc: func})
+  }
+
+  handleSeeCode = (func, e) => {
+    if(func in variadic) {
+      fetch(`https://raw.githubusercontent.com/variadicjs/variadic.js/develop/lib/${func}.js`).then((response) => {
+        response.text().then((data) => {
+          this.setState({cardText: data, currentFunc: func});
+        });
+      })
+    }
   }
 
   render() {
@@ -46,20 +57,21 @@ class Main extends Component {
     }
 
     const {
-      cardText, 
-      subtitle, 
-      demoTitle, 
-      result, 
+      cardText,
+      subtitle,
+      demoTitle,
+      result,
       currentFunc
     } = this.state;
-    
+
     let demoCard = demoTitle.map((title, i) => (
         <Cards
-          key={i} 
-          demoTitle={title} 
+          key={i}
+          demoTitle={title}
           cardText={cardText}
           subtitle={subtitle}
-          onClickHandler={this.handleClick} 
+          onClickHandler={this.handleClick}
+          onSeeCodeHandler={this.handleSeeCode}
           result={result}
           currentFunc={currentFunc}
         />
