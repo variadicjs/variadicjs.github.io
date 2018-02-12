@@ -14,11 +14,13 @@ import {
 class FuncCard extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.state.params = [];
-    this.state.result = '';
+    this.state = {
+      params: [],
+      result: '',
+      showCode: false,
+      code: '',
+    };
 
-    this.state.showCode = false;
     this.fetchCode(props.demoTitle);
     this.handleToggleCode = this.handleToggleCode.bind(this);
     this.handleParamsChange = this.handleParamsChange.bind(this);
