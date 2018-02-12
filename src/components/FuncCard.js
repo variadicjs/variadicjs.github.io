@@ -63,6 +63,7 @@ class FuncCard extends Component {
       <Card className="custom-card">
         <CardTitle title={funcName} subtitle={subtitle} />
         <FuncParams
+            funcName={this.props.funcName}
             params={this.state.params}
             onParamsChange={this.handleParamsChange}
             onSubmit={this.handleParamSubmit}

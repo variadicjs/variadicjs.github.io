@@ -21,6 +21,7 @@ class FuncParams extends Component {
       prevState.params.push(Number(this.state.value))
       return {params: prevState.params}
     })
+    this.textField.select();
     this.props.onParamsChange(this.state.params);
   }
 
@@ -28,8 +29,10 @@ class FuncParams extends Component {
     return(
       <form onSubmit={this.handleParamSubmit}>
         <TextField
-          id="new-param"
+          ref={(input) => {this.textField = input;}}
+          id={`${this.props.funcName}-input`}
           type="number"
+          step="0.01"
           hintText="Enter number and hit RETURN"
           onChange={this.handleInputChange}
         />
