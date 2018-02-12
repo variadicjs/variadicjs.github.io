@@ -25,17 +25,8 @@ class CardList extends Component {
     this.setState({demoTitle: Object.values(funcTitles)})
   }
 
-  handleClick = (func, params, e) => {
-    // TODO: DO SOMETHING WITH THE OUTPUT
-    // console.log(func, params, e)
-    let result;
-
-    if(func in variadic) {
-     result = variadic[func].apply(this,params);
-    }
-    //Set answer to state
-    let text = `variadic.${func}(${params}) = ${result}`
-    this.setState({cardText: text, result: result, currentFunc: func})
+  handleClick = (func, e) => {
+    this.setState({currentFunc: func})
   }
 
   render() {
