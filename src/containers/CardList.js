@@ -7,22 +7,10 @@ class CardList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cardText: "Results",
       subtitle: "Type numbers to test function",
-      demoTitle: [],
-      result: "",
+      funcNames: Object.keys(variadic),
       currentFunc: ""
     };
-  }
-
-  componentDidMount(){
-    let funcTitles = []
-    //Get all current functions in variadic
-    for(let i in variadic){
-      funcTitles.push(i)
-    }
-    //Set their titles to state
-    this.setState({demoTitle: Object.values(funcTitles)})
   }
 
   handleClick = (func, e) => {
@@ -38,21 +26,18 @@ class CardList extends Component {
     }
 
     const {
-      cardText,
       subtitle,
-      demoTitle,
-      result,
+      funcNames,
       currentFunc
     } = this.state;
 
-    let demoCard = demoTitle.map((title, i) => (
+    let funcCards = funcNames.map((funcName, i) => (
         <FuncCard
           key={i}
-          demoTitle={title}
-          cardText={cardText}
+          funcName={funcName}
+          func={variadic[funcName]}
           subtitle={subtitle}
           onClickHandler={this.handleClick}
-          result={result}
           currentFunc={currentFunc}
         />
     ));
@@ -61,7 +46,7 @@ class CardList extends Component {
       <div>
         <NavBar />
         <div style={flexContainer}>
-          {demoCard}
+          {funcCards}
         </div>
       </div>
     );

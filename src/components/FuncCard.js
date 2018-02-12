@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import "./FuncCard.css";
-import variadic from 'variadic.js';
 import FuncCode from './FuncCode';
 import FuncParams from './FuncParams';
 import {
@@ -21,20 +20,18 @@ class FuncCard extends Component {
       code: '',
     };
 
-    this.fetchCode(props.demoTitle);
+    this.fetchCode(props.funcName);
     this.handleToggleCode = this.handleToggleCode.bind(this);
     this.handleParamsChange = this.handleParamsChange.bind(this);
     this.handleRunCode = this.handleRunCode.bind(this);
   }
 
   fetchCode(func) {
-    if(func in variadic) {
-      fetch(`https://raw.githubusercontent.com/variadicjs/variadic.js/develop/lib/${func}.js`).then((response) => {
-        response.text().then((data) => {
-          this.setState({code: data});
-        });
-      })
-    }
+    fetch(`https://raw.githubusercontent.com/variadicjs/variadic.js/develop/lib/${func}.js`).then((response) => {
+      response.text().then((data) => {
+        this.setState({code: data});
+      });
+    })
   }
 
   handleParamsChange(params, e) {
@@ -42,12 +39,12 @@ class FuncCard extends Component {
   }
 
   handleRunCode(e) {
-    let result = variadic[this.props.demoTitle](...this.state.params);
-    let func = this.props.demoTitle;
+    let funcName = this.props.funcName;
     let params = this.state.params;
-    let text = `variadic.${func}(${params}) = ${result}`;
+    let result = this.props.func(...params);
+    let text = `variadic.${funcName}(${params}) = ${result}`;
     this.setState({result: text});
-    this.props.onClickHandler(this.props.demoTitle);
+    this.props.onClickHandler(funcName);
   }
 
   handleToggleCode(e) {
@@ -57,14 +54,14 @@ class FuncCard extends Component {
 
   render() {
     const {
-      demoTitle,
+      funcName,
       subtitle,
       currentFunc
     } = this.props;
 
     return (
       <Card className="custom-card">
-        <CardTitle title={demoTitle} subtitle={subtitle} />
+        <CardTitle title={funcName} subtitle={subtitle} />
         <FuncParams
             params={this.state.params}
             onParamsChange={this.handleParamsChange}
@@ -77,7 +74,7 @@ class FuncCard extends Component {
         </CardActions>
         <CardText>
             {//Only showing result for function user is on
-              demoTitle === currentFunc?
+              funcName === currentFunc?
               `${this.state.result}`
               :
               null
