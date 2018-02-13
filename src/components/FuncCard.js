@@ -56,28 +56,34 @@ class FuncCard extends Component {
       funcName,
       subtitle,
     } = this.props;
+    const {
+      params,
+      result,
+      showCode,
+      code
+    } = this.state;
 
     return (
       <Card className="custom-card">
         <CardTitle title={funcName} subtitle={subtitle} />
         <FuncParams
-            funcName={this.props.funcName}
-            params={this.state.params}
+            funcName={funcName}
+            params={params}
             onParamsChange={this.handleParamsChange}
             onSubmit={this.handleParamSubmit}
           />
 
         <FuncResult
-          funcName={this.props.funcName}
-          params={this.state.params}
-          result={this.state.result}
+          funcName={funcName}
+          params={params}
+          result={result}
         />
 
         <CardActions>
           <FlatButton label="Run" onClick={this.handleRunCode}/>
-          <FlatButton label={this.state.showCode ? 'Hide Code' : 'Show Code'} onClick={this.handleToggleCode}/>
+          <FlatButton label={showCode ? 'Hide Code' : 'Show Code'} onClick={this.handleToggleCode}/>
         </CardActions>
-        {(this.state.showCode && <FuncCode code={this.state.code}/>)}
+        {(showCode && <FuncCode code={code}/>)}
       </Card>
     )
   }
