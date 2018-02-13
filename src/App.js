@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {MuiThemeProvider} from 'material-ui';
-import CardList from '../containers/CardList';
+import CardList from './containers/CardList';
 
 class App extends Component {
   render() {
