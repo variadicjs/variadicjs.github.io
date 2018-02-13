@@ -20,7 +20,6 @@ class FuncCard extends Component {
       code: '',
     };
 
-    this.fetchCode(props.funcName);
     this.handleToggleCode = this.handleToggleCode.bind(this);
     this.handleParamsChange = this.handleParamsChange.bind(this);
     this.handleRunCode = this.handleRunCode.bind(this);
@@ -32,6 +31,10 @@ class FuncCard extends Component {
         this.setState({code: data});
       });
     })
+  }
+
+  componentDidMount() {
+    this.fetchCode(this.props.funcName);
   }
 
   handleParamsChange(params, e) {
