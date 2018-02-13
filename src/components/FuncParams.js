@@ -4,8 +4,9 @@ import {TextField} from 'material-ui';
 class FuncParams extends Component {
   constructor(props) {
     super(props);
-    this.state = {params: props.params}
-    this.state.value = 0;
+    this.state = {
+      value: 0
+    };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleParamSubmit = this.handleParamSubmit.bind(this);
@@ -17,12 +18,10 @@ class FuncParams extends Component {
 
   handleParamSubmit(e) {
     e.preventDefault();
-    this.setState(prevState => {
-      prevState.params.push(Number(this.state.value))
-      return {params: prevState.params}
-    })
+    let params = this.props.params.slice();
+    params.push(Number(this.state.value));
     this.textField.select();
-    this.props.onParamsChange(this.state.params);
+    this.props.onParamsChange(params);
   }
 
   render() {
