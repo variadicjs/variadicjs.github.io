@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {TextField, CardText} from 'material-ui';
+import {TextField} from 'material-ui';
 
 class FuncParams extends Component {
   constructor(props) {
@@ -36,9 +36,6 @@ class FuncParams extends Component {
           hintText="Enter number and hit RETURN"
           onChange={this.handleInputChange}
         />
-        <CardText>
-          [{this.state.params.toString()}]
-        </CardText>
       </form>
     );
   }
