@@ -25,11 +25,13 @@ class FuncParams extends Component {
   }
 
   render() {
+    const {funcName} = this.props;
+
     return(
       <form onSubmit={this.handleParamSubmit}>
         <TextField
           ref={(input) => {this.textField = input;}}
-          id={`${this.props.funcName}-input`}
+          id={`${funcName}-input`}
           type="number"
           step="0.01"
           hintText="Enter number and hit RETURN"
