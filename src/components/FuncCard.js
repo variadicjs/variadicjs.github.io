@@ -77,11 +77,13 @@ class FuncCard extends Component {
             onSubmit={this.handleParamSubmit}
           />
 
-        <FuncResult
-          funcName={funcName}
-          params={params}
-          result={result}
-        />
+        <CardText>
+          <FuncResult
+            funcName={funcName}
+            params={params}
+            result={result}
+          />
+        </CardText>
 
         <CardActions>
           <FlatButton label="Run" onClick={this.handleRunCode}/>
