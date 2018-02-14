@@ -1,16 +1,14 @@
-import React, {Component} from 'react';
-import {CardText} from 'material-ui';
+import React from 'react';
+import Prism from 'prismjs';
+import 'prismjs/themes/prism.css';
 
-class FuncCode extends Component {
-  constructor(props) {
-    super(props);
-    // TODO Format the code here
-    this.state = {code: props.code}
-  }
-
-  render() {
-    return(<CardText>{this.state.code}</CardText>);
-  }
+function FuncCode(props) {
+  const html = Prism.highlight(props.code, Prism.languages.javascript);
+  return(
+    <pre className="language-js">
+      <code  dangerouslySetInnerHTML={{__html:html}}/>
+    </pre>
+  );
 }
 
 export default FuncCode;
