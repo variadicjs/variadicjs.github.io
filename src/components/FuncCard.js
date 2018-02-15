@@ -9,6 +9,7 @@ import {
   FlatButton,
   CardTitle,
   CardText,
+  Dialog,
 } from 'material-ui';
 
 class FuncCard extends Component {
@@ -63,7 +64,6 @@ class FuncCard extends Component {
     const {
       params,
       result,
-      showCode,
       code
     } = this.state;
 
@@ -87,9 +87,19 @@ class FuncCard extends Component {
 
         <CardActions>
           <FlatButton label="Run" onClick={this.handleRunCode}/>
-          <FlatButton label={showCode ? 'Hide Code' : 'Show Code'} onClick={this.handleToggleCode}/>
+          <FlatButton label={'Show Code'} onClick={this.handleToggleCode}/>
         </CardActions>
-        {(showCode && <CardText><FuncCode code={code}/></CardText>)}
+
+        <Dialog
+          title={`variadic.${funcName}()`}
+          modal={false}
+          open={this.state.showCode}
+          onRequestClose={this.handleToggleCode}
+          autoScrollBodyContent={true}
+        >
+          <FuncCode code={code}/>
+          <FlatButton label="Hide Code" onClick={this.handleToggleCode}/>
+        </Dialog>
       </Card>
     )
   }
