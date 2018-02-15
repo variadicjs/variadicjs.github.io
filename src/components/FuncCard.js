@@ -8,6 +8,7 @@ import {
   CardActions,
   FlatButton,
   CardTitle,
+  CardText,
 } from 'material-ui';
 
 class FuncCard extends Component {
@@ -76,17 +77,19 @@ class FuncCard extends Component {
             onSubmit={this.handleParamSubmit}
           />
 
-        <FuncResult
-          funcName={funcName}
-          params={params}
-          result={result}
-        />
+        <CardText>
+          <FuncResult
+            funcName={funcName}
+            params={params}
+            result={result}
+          />
+        </CardText>
 
         <CardActions>
           <FlatButton label="Run" onClick={this.handleRunCode}/>
           <FlatButton label={showCode ? 'Hide Code' : 'Show Code'} onClick={this.handleToggleCode}/>
         </CardActions>
-        {(showCode && <FuncCode code={code}/>)}
+        {(showCode && <CardText><FuncCode code={code}/></CardText>)}
       </Card>
     )
   }

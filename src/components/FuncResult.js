@@ -1,31 +1,16 @@
-import React, {Component} from 'react';
-import {CardText} from 'material-ui';
+import React from 'react';
+import Prism from 'prismjs';
+import 'prismjs/themes/prism.css';
 
-class FuncResult extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {params: props.params}
-
-    this.handleParamRemove = this.handleParamRemove.bind(this);
-  }
-
-  handleParamRemove(e) {
-    // TODO implement parameters removing
-    this.setState(prevState => {
-      // prevState.params.push(Number(this.state.value))
-      return {params: prevState.params}
-    })
-    this.props.onParamsChange(this.state.params);
-  }
-
-  render() {
-    const {funcName, params, result} = this.props;
-    return(
-      <CardText>
-        {`variadic.${funcName}(${params}) = ${result}`}
-      </CardText>
-    );
-  }
+function FuncResult(props) {
+  const {funcName, params, result} = props;
+  const code = `variadic.${funcName}(${params}) = ${result}`;
+  const html = Prism.highlight(code, Prism.languages.javascript);
+  return(
+    <pre className="language-js">
+      <code  dangerouslySetInnerHTML={{__html:html}}/>
+    </pre>
+  );
 }
 
 export default FuncResult;
