@@ -11,6 +11,7 @@ import {
   CardText,
   Dialog,
 } from 'material-ui';
+import { version } from 'variadic.js/package.json';
 
 class FuncCard extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class FuncCard extends Component {
   }
 
   fetchCode(func) {
-    fetch(`https://raw.githubusercontent.com/variadicjs/variadic.js/develop/lib/${func}.js`).then((response) => {
+    fetch(`https://raw.githubusercontent.com/variadicjs/variadic.js/v${version}/lib/${func}.js`).then((response) => {
       response.text().then((data) => {
         this.setState({code: data});
       });

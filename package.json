@@ -9,7 +9,7 @@
     "prismjs": "^1.11.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "variadic.js": "0.0.20"
+    "variadic.js": "0.0.21"
   },
   "devDependencies": {
     "react-scripts": "1.1.0"
