@@ -13,7 +13,7 @@ class CardList extends PureComponent {
     };
   }
 
-  handleClick = (func, e) => {
+  handleClick(func, e) {
     this.setState({currentFunc: func})
   }
 
