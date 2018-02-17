@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import FuncCard from "../components/FuncCard";
 import NavBar from "../components/NavBar";
 import variadic from 'variadic.js';
 
-class CardList extends Component {
+class CardList extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
