@@ -41,7 +41,7 @@ class FuncCard extends PureComponent {
   }
 
   handleParamsChange(params, e) {
-    this.setState({params: params});
+    this.setState({params: params, result: ''});
   }
 
   handleRunCode(e) {
