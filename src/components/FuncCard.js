@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import "./FuncCard.css";
 import FuncCode from './FuncCode';
 import FuncParams from './FuncParams';
@@ -13,7 +13,7 @@ import {
 } from 'material-ui';
 import { version } from 'variadic.js/package.json';
 
-class FuncCard extends Component {
+class FuncCard extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
