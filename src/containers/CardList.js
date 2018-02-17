@@ -11,9 +11,11 @@ class CardList extends PureComponent {
       funcNames: Object.keys(variadic),
       currentFunc: ""
     };
+    
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = (func, e) => {
+  handleClick(func, e) {
     this.setState({currentFunc: func})
   }
 
