@@ -21,6 +21,7 @@ class FuncCard extends PureComponent {
       result: '',
       showCode: false,
       code: '',
+      error: '',
     };
 
     this.handleToggleCode = this.handleToggleCode.bind(this);
@@ -41,14 +42,19 @@ class FuncCard extends PureComponent {
   }
 
   handleParamsChange(params, e) {
-    this.setState({params: params, result: ''});
+    this.setState({params: params, result: '', error: ''});
   }
 
   handleRunCode(e) {
     let funcName = this.props.funcName;
     let params = this.state.params;
-    let result = this.props.func(...params);
-    this.setState({result: result});
+    try {
+      let result = this.props.func(...params);
+      this.setState({result: result, error: ''});
+    }
+    catch(err) {
+      this.setState({result: '', error: err.message})
+    }
     this.props.onClickHandler(funcName);
   }
 
@@ -65,6 +71,7 @@ class FuncCard extends PureComponent {
     const {
       params,
       result,
+      error,
       code
     } = this.state;
 
@@ -74,6 +81,7 @@ class FuncCard extends PureComponent {
         <FuncParams
             funcName={funcName}
             params={params}
+            error={error}
             onParamsChange={this.handleParamsChange}
             onSubmit={this.handleParamSubmit}
           />
