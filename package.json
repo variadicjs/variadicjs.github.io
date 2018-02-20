@@ -18,6 +18,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.3.0",
     "react-scripts": "1.1.0",
@@ -30,6 +31,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest --watch",
+    "coverage": "jest --coverage",
     "eject": "react-scripts eject"
   },
   "jest": {
