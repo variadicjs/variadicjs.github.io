@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import FuncCard from "../components/FuncCard";
 import NavBar from "../components/NavBar";
+import Dropdown from "../components/Dropdown";
 import variadic from 'variadic.js';
 import {Carousel} from "react-materialize";
 
@@ -22,7 +23,7 @@ class App extends PureComponent {
 
   render() {
     const flexContainer = {
-      marginTop: "20px",
+      marginTop: "30px",
       display: "flex",
       justifyContent: "center",
       flexWrap: "wrap"
@@ -33,6 +34,8 @@ class App extends PureComponent {
       funcNames,
       currentFunc
     } = this.state;
+
+    console.log(funcNames)
 
     let funcCards = funcNames.map((funcName, i) => (
       <div key={i} style={{width: "400px"}}>
@@ -50,6 +53,7 @@ class App extends PureComponent {
       <div>
         <NavBar />
         <div style={flexContainer}>
+          <Dropdown data={funcNames} />
           <Carousel>
             {funcCards}
           </Carousel>
