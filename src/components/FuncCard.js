@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
 import "./FuncCard.css";
-import FuncCode from './FuncCode';
 import FuncParams from './FuncParams';
-import FuncResult from './FuncResult';
+import Highlight from 'react-syntax-highlight';
+import 'highlight.js/styles/atom-one-light.css';
 import {
   Card,
   CardActions,
@@ -75,6 +75,8 @@ class FuncCard extends PureComponent {
       code
     } = this.state;
 
+    const callCode = `variadic.${funcName}(${params}) = ${result}`;
+
     return (
       <Card className="custom-card">
         <CardTitle title={funcName} subtitle={subtitle} />
@@ -87,11 +89,7 @@ class FuncCard extends PureComponent {
           />
 
         <CardText>
-          <FuncResult
-            funcName={funcName}
-            params={params}
-            result={result}
-          />
+          <Highlight lang="js" value={callCode} />
         </CardText>
 
         <CardActions>
@@ -106,7 +104,7 @@ class FuncCard extends PureComponent {
           onRequestClose={this.handleToggleCode}
           autoScrollBodyContent={true}
         >
-          <FuncCode code={code}/>
+          <Highlight lang="js" value={code} />
           <FlatButton label="Hide Code" onClick={this.handleToggleCode}/>
         </Dialog>
       </Card>
