@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-jest.mock('./App');
+import CardList from './containers/CardList';
+jest.mock('./containers/CardList');
 
 beforeEach(() => {
   CardList.mockClear();

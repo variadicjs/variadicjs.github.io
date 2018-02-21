@@ -3,14 +3,7 @@ import "./FuncCard.css";
 import FuncCode from './FuncCode';
 import FuncParams from './FuncParams';
 import FuncResult from './FuncResult';
-import {
-  Card,
-  CardActions,
-  FlatButton,
-  CardTitle,
-  CardText,
-  Dialog,
-} from 'material-ui';
+import {Card, Button, Modal} from "react-materialize";
 import { version } from 'variadic.js/package.json';
 
 class FuncCard extends PureComponent {
@@ -62,7 +55,6 @@ class FuncCard extends PureComponent {
     this.setState(prevState => ({showCode: !prevState.showCode}));
   }
 
-
   render() {
     const {
       funcName,
@@ -76,8 +68,10 @@ class FuncCard extends PureComponent {
     } = this.state;
 
     return (
-      <Card className="custom-card">
-        <CardTitle title={funcName} subtitle={subtitle} />
+      <Card 
+        className="custom-card"
+        title={funcName}>
+        <p style={{color: "#7D7D7D", marginBottom: "10px"}}>{subtitle}</p>
         <FuncParams
             funcName={funcName}
             params={params}
@@ -86,29 +80,21 @@ class FuncCard extends PureComponent {
             onSubmit={this.handleParamSubmit}
           />
 
-        <CardText>
-          <FuncResult
-            funcName={funcName}
-            params={params}
-            result={result}
-          />
-        </CardText>
+        <FuncResult
+          funcName={funcName}
+          params={params}
+          result={result}
+        />
+        
+        <Button onClick={this.handleRunCode}>Run</Button>
 
-        <CardActions>
-          <FlatButton label="Run" onClick={this.handleRunCode}/>
-          <FlatButton label={'Show Code'} onClick={this.handleToggleCode}/>
-        </CardActions>
-
-        <Dialog
-          title={`variadic.${funcName}()`}
-          modal={false}
+        <Modal
+          header={`variadic.${funcName}()`}
           open={this.state.showCode}
-          onRequestClose={this.handleToggleCode}
-          autoScrollBodyContent={true}
+          trigger={<Button onClick={this.handleToggleCode} className="button">Show Code</Button>}
         >
           <FuncCode code={code}/>
-          <FlatButton label="Hide Code" onClick={this.handleToggleCode}/>
-        </Dialog>
+        </Modal>
       </Card>
     )
   }
