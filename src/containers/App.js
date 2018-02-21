@@ -10,13 +10,17 @@ class App extends PureComponent {
     super(props);
     this.state = {
       subtitle: "Type numbers to test function",
-      funcNames: Object.keys(variadic),
+      funcNames: {},
       currentFunc: "",
       dropdownSelection: ""
     };
     
     this.handleClick = this.handleClick.bind(this);
     this.handleDropdownChange = this.handleDropdownChange.bind(this);
+  }
+
+  componentWillMount(){
+    this.setState({funcNames: Object.keys(variadic)})
   }
 
   handleClick(func, e) {
@@ -28,9 +32,17 @@ class App extends PureComponent {
   }
 
   componentDidUpdate(prevProps, prevState){
+
     if(this.state.dropdownSelection !== prevState.dropdownSelection){
       //logic to reorder selected card to top of funcNames list goes here
-      console.log("New Selection was made", this.state.dropdownSelection)
+      this.state.funcNames.find(match => {
+        if(match === this.state.dropdownSelection) {
+          console.log(match)
+          //need to setState of funcNames to new organized array 
+          // let newArr; 
+          // this.setState({funcNames:newArr});
+        }
+      });
     }
   }
 
@@ -47,6 +59,7 @@ class App extends PureComponent {
       funcNames,
       currentFunc
     } = this.state;
+    console.log(this.state.funcNames)
 
     let funcCards = funcNames.map((funcName, i) => (
       <div key={i} style={{width: "400px"}}>
@@ -66,7 +79,8 @@ class App extends PureComponent {
         <div style={flexContainer}>
           <Dropdown 
             data={variadic}
-            handleDropdownChange={(value) => this.handleDropdownChange(value)} />
+            handleDropdownChange={(value) => this.handleDropdownChange(value)} 
+          />
           <Carousel>
             {funcCards}
           </Carousel>
