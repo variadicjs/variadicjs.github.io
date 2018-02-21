@@ -32,17 +32,15 @@ class App extends PureComponent {
   }
 
   componentDidUpdate(prevProps, prevState){
-
+ 
     if(this.state.dropdownSelection !== prevState.dropdownSelection){
-      //logic to reorder selected card to top of funcNames list goes here
-      this.state.funcNames.find(match => {
-        if(match === this.state.dropdownSelection) {
-          console.log(match)
-          //need to setState of funcNames to new organized array 
-          // let newArr; 
-          // this.setState({funcNames:newArr});
-        }
-      });
+
+      let newArr = this.state.funcNames.filter(e => 
+        e !== this.state.dropdownSelection
+      );
+
+      newArr.unshift(this.state.dropdownSelection)
+      this.setState({funcNames:newArr});
     }
   }
 
@@ -59,7 +57,6 @@ class App extends PureComponent {
       funcNames,
       currentFunc
     } = this.state;
-    console.log(this.state.funcNames)
 
     let funcCards = funcNames.map((funcName, i) => (
       <div key={i} style={{width: "400px"}}>
