@@ -8,10 +8,9 @@ const Dropdown = (props) => {
   return(
     <Autocomplete
       style={s}
-      title='Function (NOT WORKING)'
-      data={
-        props.data
-      }
+      title='Function'
+      data={props.data}
+      onAutocomplete={props.handleDropdownChange}
     />
   )
 };

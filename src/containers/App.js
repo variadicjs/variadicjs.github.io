@@ -11,14 +11,27 @@ class App extends PureComponent {
     this.state = {
       subtitle: "Type numbers to test function",
       funcNames: Object.keys(variadic),
-      currentFunc: ""
+      currentFunc: "",
+      dropdownSelection: ""
     };
     
     this.handleClick = this.handleClick.bind(this);
+    this.handleDropdownChange = this.handleDropdownChange.bind(this);
   }
 
   handleClick(func, e) {
     this.setState({currentFunc: func})
+  }
+
+  handleDropdownChange(value){
+    this.setState({dropdownSelection: value})
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    if(this.state.dropdownSelection !== prevState.dropdownSelection){
+      //logic to reorder selected card to top of funcNames list goes here
+      console.log("New Selection was made", this.state.dropdownSelection)
+    }
   }
 
   render() {
@@ -34,8 +47,6 @@ class App extends PureComponent {
       funcNames,
       currentFunc
     } = this.state;
-
-    console.log(funcNames)
 
     let funcCards = funcNames.map((funcName, i) => (
       <div key={i} style={{width: "400px"}}>
@@ -53,7 +64,9 @@ class App extends PureComponent {
       <div>
         <NavBar />
         <div style={flexContainer}>
-          <Dropdown data={funcNames} />
+          <Dropdown 
+            data={variadic}
+            handleDropdownChange={(value) => this.handleDropdownChange(value)} />
           <Carousel>
             {funcCards}
           </Carousel>
