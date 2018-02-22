@@ -1,89 +1,34 @@
-import React, { PureComponent } from 'react';
-import FuncCard from "../components/FuncCard";
+import React, {Component} from 'react';
+import variadic from 'variadic.js';
+import { version } from 'variadic.js/package.json';
+import CardList from "./CardList";
 import NavBar from "../components/NavBar";
 import Dropdown from "../components/Dropdown";
-import variadic from 'variadic.js';
-import {Carousel} from "react-materialize";
 
-class App extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      subtitle: "Type numbers to test function",
-      funcNames: {},
-      currentFunc: "",
-      dropdownSelection: ""
-    };
-    
-    this.handleClick = this.handleClick.bind(this);
-    this.handleDropdownChange = this.handleDropdownChange.bind(this);
-  }
-
-  componentWillMount(){
-    this.setState({funcNames: Object.keys(variadic)})
-  }
-
-  handleClick(func, e) {
-    this.setState({currentFunc: func})
-  }
+//React.js updates - You can use this when you don't have props
+class App extends Component {
+  state={}
 
   handleDropdownChange(value){
     this.setState({dropdownSelection: value})
+    console.log("WHAT")
   }
 
-  componentDidUpdate(prevProps, prevState){
- 
-    if(this.state.dropdownSelection !== prevState.dropdownSelection){
-
-      let newArr = this.state.funcNames.filter(e => 
-        e !== this.state.dropdownSelection
-      );
-
-      newArr.unshift(this.state.dropdownSelection)
-      this.setState({funcNames:newArr});
-    }
-  }
-
-  render() {
-    const flexContainer = {
-      marginTop: "30px",
-      display: "flex",
-      justifyContent: "center",
-      flexWrap: "wrap"
-    }
-
-    const {
-      subtitle,
-      funcNames,
-      currentFunc
-    } = this.state;
-
-    let funcCards = funcNames.map((funcName, i) => (
-      <div key={i} style={{width: "400px"}}>
-        <FuncCard
-          funcName={funcName}
-          func={variadic[funcName]}
-          subtitle={subtitle}
-          onClickHandler={this.handleClick}
-          currentFunc={currentFunc}
+  render(){
+    return(
+      <div>
+        <NavBar version={`VariadicJS (${version})`} />
+        <Dropdown 
+          data={variadic} 
+          handleDropdownChange={(value) => this.handleDropdownChange(value)} 
+        />
+        <CardList 
+          version={version}
+          variadic={variadic}
+          dropdownSelection={this.state.dropdownSelection}
         />
       </div>
-    ));
-
-    return (
-      <div>
-        <NavBar />
-        <div style={flexContainer}>
-          <Dropdown 
-            data={variadic}
-            handleDropdownChange={(value) => this.handleDropdownChange(value)} 
-          />
-          <Carousel>
-            {funcCards}
-          </Carousel>
-        </div>
-      </div>
-    );
+    )
   }
 }
 

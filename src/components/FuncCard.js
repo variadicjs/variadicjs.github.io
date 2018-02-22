@@ -1,12 +1,11 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import "./FuncCard.css";
 import FuncCode from './FuncCode';
 import FuncParams from './FuncParams';
 import FuncResult from './FuncResult';
 import {Card, Button, Modal} from "react-materialize";
-import { version } from 'variadic.js/package.json';
 
-class FuncCard extends PureComponent {
+class FuncCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,16 +21,16 @@ class FuncCard extends PureComponent {
     this.handleRunCode = this.handleRunCode.bind(this);
   }
 
+  componentDidMount() {
+    this.fetchCode(this.props.funcName);
+  }
+
   fetchCode(func) {
-    fetch(`https://raw.githubusercontent.com/variadicjs/variadic.js/v${version}/lib/${func}.js`).then((response) => {
+    fetch(`https://raw.githubusercontent.com/variadicjs/variadic.js/v${this.props.version}/lib/${func}.js`).then((response) => {
       response.text().then((data) => {
         this.setState({code: data});
       });
     })
-  }
-
-  componentDidMount() {
-    this.fetchCode(this.props.funcName);
   }
 
   handleParamsChange(params, e) {
@@ -78,7 +77,7 @@ class FuncCard extends PureComponent {
             error={error}
             onParamsChange={this.handleParamsChange}
             onSubmit={this.handleParamSubmit}
-          />
+        />
 
         <FuncResult
           funcName={funcName}
