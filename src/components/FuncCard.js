@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import "./FuncCard.css";
-import FuncCode from './FuncCode';
 import FuncParams from './FuncParams';
-import FuncResult from './FuncResult';
+import Highlight from 'react-syntax-highlight';
+import 'highlight.js/styles/atom-one-light.css';
 import {Card, Button, Modal} from "react-materialize";
 import { version } from 'variadic.js/package.json';
 
@@ -68,6 +68,8 @@ class FuncCard extends Component {
       showCode
     } = this.state;
 
+    const callCode = `variadic.${funcName}(${params}) = ${result}`;
+
     return (
       <Card
         className="custom-card"
@@ -81,11 +83,7 @@ class FuncCard extends Component {
             onSubmit={this.handleParamSubmit}
         />
 
-        <FuncResult
-          funcName={funcName}
-          params={params}
-          result={result}
-        />
+        <Highlight lang="js" value={callCode} />
 
         <Button onClick={this.handleRunCode}>Run</Button>
 
@@ -95,7 +93,7 @@ class FuncCard extends Component {
           open={showCode}
           trigger={<Button onClick={this.handleToggleCode} className="button">Show Code</Button>}
         >
-          <FuncCode code={code}/>
+          <Highlight lang="js" value={code} />
         </Modal>
       </Card>
     )
