@@ -4,6 +4,7 @@ import FuncCode from './FuncCode';
 import FuncParams from './FuncParams';
 import FuncResult from './FuncResult';
 import {Card, Button, Modal} from "react-materialize";
+import { version } from 'variadic.js/package.json';
 
 class FuncCard extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class FuncCard extends Component {
   }
 
   fetchCode(func) {
-    fetch(`https://raw.githubusercontent.com/variadicjs/variadic.js/v${this.props.version}/lib/${func}.js`).then((response) => {
+    fetch(`https://raw.githubusercontent.com/variadicjs/variadic.js/v${version}/lib/${func}.js`).then((response) => {
       response.text().then((data) => {
         this.setState({code: data});
       });
@@ -68,7 +69,7 @@ class FuncCard extends Component {
     } = this.state;
 
     return (
-      <Card 
+      <Card
         className="custom-card"
         title={funcName}>
         <p style={{color: "#7D7D7D", marginBottom: "10px"}}>{subtitle}</p>
@@ -85,7 +86,7 @@ class FuncCard extends Component {
           params={params}
           result={result}
         />
-        
+
         <Button onClick={this.handleRunCode}>Run</Button>
 
         <Modal
