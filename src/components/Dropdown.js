@@ -5,12 +5,15 @@ const Dropdown = (props) => {
   const s = {
     width: "40%"
   }
+
+  const {handleDropdownChange, data} = props;
+
   return(
     <Autocomplete
       style={s}
       title='Function'
-      data={props.data}
-      onAutocomplete={props.handleDropdownChange}
+      data={data}
+      onAutocomplete={handleDropdownChange}
     />
   )
 };

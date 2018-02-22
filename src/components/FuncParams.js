@@ -26,11 +26,12 @@ class FuncParams extends Component {
 
   render() {
     const {funcName, error} = this.props;
+    const {value} = this.state;
 
     return(
       <form onSubmit={this.handleParamSubmit}>
         <Input
-          value={this.state.value}
+          value={value}
           id={`${funcName}-input`}
           type="number"
           step="0.01"

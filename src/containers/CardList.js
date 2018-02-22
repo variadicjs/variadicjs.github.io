@@ -49,12 +49,17 @@ class CardList extends Component {
       currentFunc
     } = this.state;
 
+    const {
+      version,
+      variadic
+    } = this.props;
+
     let funcCards = funcNames.map((funcName, i) => (
       <div key={i} style={{width: "400px"}}>
         <FuncCard
-          version={this.props.version}
+          version={version}
           funcName={funcName}
-          func={this.props.variadic[funcName]}
+          func={variadic[funcName]}
           subtitle={subtitle}
           onClickHandler={this.handleClick}
           currentFunc={currentFunc}

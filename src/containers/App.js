@@ -11,10 +11,10 @@ class App extends Component {
 
   handleDropdownChange(value){
     this.setState({dropdownSelection: value})
-    console.log("WHAT")
   }
 
   render(){
+    const {dropdownSelection} = this.state;
     return(
       <div>
         <NavBar version={`VariadicJS (${version})`} />
@@ -25,7 +25,7 @@ class App extends Component {
         <CardList 
           version={version}
           variadic={variadic}
-          dropdownSelection={this.state.dropdownSelection}
+          dropdownSelection={dropdownSelection}
         />
       </div>
     )

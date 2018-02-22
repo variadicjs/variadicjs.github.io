@@ -63,7 +63,8 @@ class FuncCard extends Component {
       params,
       result,
       error,
-      code
+      code,
+      showCode
     } = this.state;
 
     return (
@@ -88,8 +89,9 @@ class FuncCard extends Component {
         <Button onClick={this.handleRunCode}>Run</Button>
 
         <Modal
+          style={{width: "70%"}}
           header={`variadic.${funcName}()`}
-          open={this.state.showCode}
+          open={showCode}
           trigger={<Button onClick={this.handleToggleCode} className="button">Show Code</Button>}
         >
           <FuncCode code={code}/>
