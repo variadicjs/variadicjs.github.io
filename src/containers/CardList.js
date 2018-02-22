@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FuncCard from "../components/FuncCard";
 import {Carousel} from "react-materialize";
+import variadic from 'variadic.js';
 
 class CardList extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class CardList extends Component {
   }
 
   componentWillMount(){
-    this.setState({funcNames: Object.keys(this.props.variadic)})
+    this.setState({funcNames: Object.keys(variadic)})
   }
 
   handleClick(func, e) {
@@ -48,10 +49,6 @@ class CardList extends Component {
       funcNames,
       currentFunc
     } = this.state;
-
-    const {
-      variadic
-    } = this.props;
 
     let funcCards = funcNames.map((funcName, i) => (
       <div key={i} style={{width: "400px"}}>
