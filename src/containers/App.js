@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import variadic from 'variadic.js';
 import CardList from "./CardList";
 import NavBar from "../components/NavBar";
-import Dropdown from "../components/Dropdown";
 
 //React.js updates - You can use this when you don't have props
 class App extends Component {
@@ -17,10 +16,6 @@ class App extends Component {
     return(
       <div>
         <NavBar />
-        <Dropdown
-          data={variadic}
-          handleDropdownChange={(value) => this.handleDropdownChange(value)}
-        />
         <CardList
           variadic={variadic}
           dropdownSelection={dropdownSelection}

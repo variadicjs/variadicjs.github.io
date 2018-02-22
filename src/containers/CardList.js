@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FuncCard from "../components/FuncCard";
 import {Carousel} from "react-materialize";
+import Dropdown from "../components/Dropdown";
 import variadic from 'variadic.js';
 
 class CardList extends Component {
@@ -15,6 +16,10 @@ class CardList extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  handleDropdownChange(value){
+    this.setState({dropdownSelection: value})
+  }
+
   componentWillMount(){
     this.setState({funcNames: Object.keys(variadic)})
   }
@@ -25,13 +30,13 @@ class CardList extends Component {
 
   componentDidUpdate(prevProps, prevState){
 
-    if(this.props.dropdownSelection !== prevProps.dropdownSelection){
+    if(this.state.dropdownSelection !== prevState.dropdownSelection){
 
       let newArr = this.state.funcNames.filter(e =>
-        e !== this.props.dropdownSelection
+        e !== this.state.dropdownSelection
       );
 
-      newArr.unshift(this.props.dropdownSelection)
+      newArr.unshift(this.state.dropdownSelection)
       this.setState({funcNames:newArr});
     }
   }
@@ -64,6 +69,10 @@ class CardList extends Component {
 
     return (
       <div style={flexContainer}>
+        <Dropdown
+          data={variadic}
+          handleDropdownChange={(value) => this.handleDropdownChange(value)}
+        />
         <Carousel>
           {funcCards}
         </Carousel>
