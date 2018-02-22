@@ -17,7 +17,8 @@ class CardList extends Component {
   }
 
   handleDropdownChange(value){
-    this.setState({dropdownSelection: value})
+    let i = this.state.funcNames.indexOf(value);
+    eval(`$('.carousel').carousel('set', ${i})`);
   }
 
   componentWillMount(){
@@ -26,19 +27,6 @@ class CardList extends Component {
 
   handleClick(func, e) {
     this.setState({currentFunc: func})
-  }
-
-  componentDidUpdate(prevProps, prevState){
-
-    if(this.state.dropdownSelection !== prevState.dropdownSelection){
-
-      let newArr = this.state.funcNames.filter(e =>
-        e !== this.state.dropdownSelection
-      );
-
-      newArr.unshift(this.state.dropdownSelection)
-      this.setState({funcNames:newArr});
-    }
   }
 
   render() {
