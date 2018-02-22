@@ -1,18 +1,29 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import FuncCard from "../components/FuncCard";
-import NavBar from "../components/NavBar";
+import {Carousel} from "react-materialize";
+import Dropdown from "../components/Dropdown";
 import variadic from 'variadic.js';
 
-class CardList extends PureComponent {
+class CardList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       subtitle: "Type numbers to test function",
-      funcNames: Object.keys(variadic),
+      funcNames: {},
       currentFunc: ""
     };
-    
+
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleDropdownChange(value){
+    let i = this.state.funcNames.indexOf(value);
+    if (i < 0) return;
+    eval(`$('.carousel').carousel('set', ${i})`);
+  }
+
+  componentWillMount(){
+    this.setState({funcNames: Object.keys(variadic)})
   }
 
   handleClick(func, e) {
@@ -21,7 +32,7 @@ class CardList extends PureComponent {
 
   render() {
     const flexContainer = {
-      marginTop: "20px",
+      marginTop: "30px",
       display: "flex",
       justifyContent: "center",
       flexWrap: "wrap"
@@ -34,22 +45,26 @@ class CardList extends PureComponent {
     } = this.state;
 
     let funcCards = funcNames.map((funcName, i) => (
+      <div key={i} style={{width: "400px"}}>
         <FuncCard
-          key={i}
           funcName={funcName}
           func={variadic[funcName]}
           subtitle={subtitle}
           onClickHandler={this.handleClick}
           currentFunc={currentFunc}
         />
+      </div>
     ));
 
     return (
-      <div>
-        <NavBar />
-        <div style={flexContainer}>
+      <div style={flexContainer}>
+        <Dropdown
+          data={variadic}
+          handleDropdownChange={(e, value) => this.handleDropdownChange(value)}
+        />
+        <Carousel>
           {funcCards}
-        </div>
+        </Carousel>
       </div>
     );
   }

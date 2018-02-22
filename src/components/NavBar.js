@@ -1,17 +1,17 @@
 import React from 'react';
-import {AppBar, IconButton, FontIcon} from 'material-ui';
-import {grey800} from 'material-ui/styles/colors';
+import {Navbar, NavItem, Icon} from 'react-materialize';
 import { version } from 'variadic.js/package.json';
 
-const NavBar = () => (
-  <AppBar
-    style={{backgroundColor: grey800}}
-    title={`VariadicJS (${version})`}
-    iconElementRight={
-      <IconButton>
-        <FontIcon className="material-icons">settings</FontIcon>
-      </IconButton>}
-  />
+const NavBar = (props) => (
+  <Navbar
+  	right
+    style={{backgroundColor: "#424242", paddingLeft:"20px"}}
+    brand={`VariadicJS (${version})`}
+    >
+    <NavItem>
+        <Icon medium>settings</Icon>
+    </NavItem>
+  </Navbar>
 );
 
 export default NavBar;

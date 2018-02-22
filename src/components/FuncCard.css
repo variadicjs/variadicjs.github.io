@@ -1,5 +1,5 @@
 .custom-card {
-    width: 30%;
+    width: 40%;
     min-width: 300px;
     margin: 10px;
     text-align: center;
@@ -8,4 +8,10 @@
 .text-field {
 	max-width: 35px;
 	margin: 10px;
+}
+
+.button {
+	width: 40%;
+	padding: 0;
+	margin-left: 10px;
 }

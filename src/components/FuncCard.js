@@ -1,19 +1,12 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import "./FuncCard.css";
 import FuncParams from './FuncParams';
 import Highlight from 'react-syntax-highlight';
 import 'highlight.js/styles/atom-one-light.css';
-import {
-  Card,
-  CardActions,
-  FlatButton,
-  CardTitle,
-  CardText,
-  Dialog,
-} from 'material-ui';
+import {Card, Button, Modal} from "react-materialize";
 import { version } from 'variadic.js/package.json';
 
-class FuncCard extends PureComponent {
+class FuncCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,16 +22,16 @@ class FuncCard extends PureComponent {
     this.handleRunCode = this.handleRunCode.bind(this);
   }
 
+  componentDidMount() {
+    this.fetchCode(this.props.funcName);
+  }
+
   fetchCode(func) {
     fetch(`https://raw.githubusercontent.com/variadicjs/variadic.js/v${version}/lib/${func}.js`).then((response) => {
       response.text().then((data) => {
         this.setState({code: data});
       });
     })
-  }
-
-  componentDidMount() {
-    this.fetchCode(this.props.funcName);
   }
 
   handleParamsChange(params, e) {
@@ -62,7 +55,6 @@ class FuncCard extends PureComponent {
     this.setState(prevState => ({showCode: !prevState.showCode}));
   }
 
-
   render() {
     const {
       funcName,
@@ -72,41 +64,37 @@ class FuncCard extends PureComponent {
       params,
       result,
       error,
-      code
+      code,
+      showCode
     } = this.state;
 
     const callCode = `variadic.${funcName}(${params}) = ${result}`;
 
     return (
-      <Card className="custom-card">
-        <CardTitle title={funcName} subtitle={subtitle} />
+      <Card
+        className="custom-card"
+        title={funcName}>
+        <p style={{color: "#7D7D7D", marginBottom: "10px"}}>{subtitle}</p>
         <FuncParams
             funcName={funcName}
             params={params}
             error={error}
             onParamsChange={this.handleParamsChange}
             onSubmit={this.handleParamSubmit}
-          />
+        />
 
-        <CardText>
-          <Highlight lang="js" value={callCode} />
-        </CardText>
+        <Highlight lang="js" value={callCode} />
 
-        <CardActions>
-          <FlatButton label="Run" onClick={this.handleRunCode}/>
-          <FlatButton label={'Show Code'} onClick={this.handleToggleCode}/>
-        </CardActions>
+        <Button onClick={this.handleRunCode}>Run</Button>
 
-        <Dialog
-          title={`variadic.${funcName}()`}
-          modal={false}
-          open={this.state.showCode}
-          onRequestClose={this.handleToggleCode}
-          autoScrollBodyContent={true}
+        <Modal
+          style={{width: "70%"}}
+          header={`variadic.${funcName}()`}
+          open={showCode}
+          trigger={<Button onClick={this.handleToggleCode} className="button">Show Code</Button>}
         >
           <Highlight lang="js" value={code} />
-          <FlatButton label="Hide Code" onClick={this.handleToggleCode}/>
-        </Dialog>
+        </Modal>
       </Card>
     )
   }
