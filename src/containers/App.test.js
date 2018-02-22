@@ -1,9 +1,7 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import {shallow, mount} from 'enzyme';
 import App from './App';
-import CardList from './containers/CardList';
-// jest.mock('./containers/CardList');
+import CardList from './CardList';
 
 describe('<App />', () => {
   it('renders without crashing', () => {
