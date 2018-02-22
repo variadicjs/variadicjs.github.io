@@ -16,7 +16,7 @@ const Dropdown = (props) => {
   //Avoiding mutation
   let cardData = Object.assign({}, data);
   Object.keys(cardData).forEach(key => {
-    return cardData[key] = null 
+    return cardData[key] = null
   });
 
   return(
@@ -24,7 +24,7 @@ const Dropdown = (props) => {
       style={s}
       title='Function'
       data={cardData}
-      onAutocomplete={props.handleDropdownChange}
+      onChange={props.handleDropdownChange}
     />
   )
 };

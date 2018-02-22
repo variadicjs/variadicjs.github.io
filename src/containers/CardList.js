@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import FuncCard from "../components/FuncCard";
 import {Carousel} from "react-materialize";
+import Dropdown from "../components/Dropdown";
+import variadic from 'variadic.js';
 
 class CardList extends Component {
   constructor(props) {
@@ -10,29 +12,22 @@ class CardList extends Component {
       funcNames: {},
       currentFunc: ""
     };
-    
+
     this.handleClick = this.handleClick.bind(this);
   }
 
+  handleDropdownChange(value){
+    let i = this.state.funcNames.indexOf(value);
+    if (i < 0) return;
+    eval(`$('.carousel').carousel('set', ${i})`);
+  }
+
   componentWillMount(){
-    this.setState({funcNames: Object.keys(this.props.variadic)})
+    this.setState({funcNames: Object.keys(variadic)})
   }
 
   handleClick(func, e) {
     this.setState({currentFunc: func})
-  }
-
-  componentDidUpdate(prevProps, prevState){
- 
-    if(this.props.dropdownSelection !== prevProps.dropdownSelection){
-
-      let newArr = this.state.funcNames.filter(e => 
-        e !== this.props.dropdownSelection
-      );
-
-      newArr.unshift(this.props.dropdownSelection)
-      this.setState({funcNames:newArr});
-    }
   }
 
   render() {
@@ -49,15 +44,9 @@ class CardList extends Component {
       currentFunc
     } = this.state;
 
-    const {
-      version,
-      variadic
-    } = this.props;
-
     let funcCards = funcNames.map((funcName, i) => (
       <div key={i} style={{width: "400px"}}>
         <FuncCard
-          version={version}
           funcName={funcName}
           func={variadic[funcName]}
           subtitle={subtitle}
@@ -69,6 +58,10 @@ class CardList extends Component {
 
     return (
       <div style={flexContainer}>
+        <Dropdown
+          data={variadic}
+          handleDropdownChange={(e, value) => this.handleDropdownChange(value)}
+        />
         <Carousel>
           {funcCards}
         </Carousel>
