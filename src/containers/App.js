@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import variadic from 'variadic.js';
-import { version } from 'variadic.js/package.json';
 import CardList from "./CardList";
 import NavBar from "../components/NavBar";
 import Dropdown from "../components/Dropdown";
@@ -17,13 +16,12 @@ class App extends Component {
     const {dropdownSelection} = this.state;
     return(
       <div>
-        <NavBar version={`VariadicJS (${version})`} />
-        <Dropdown 
-          data={variadic} 
-          handleDropdownChange={(value) => this.handleDropdownChange(value)} 
+        <NavBar />
+        <Dropdown
+          data={variadic}
+          handleDropdownChange={(value) => this.handleDropdownChange(value)}
         />
-        <CardList 
-          version={version}
+        <CardList
           variadic={variadic}
           dropdownSelection={dropdownSelection}
         />
