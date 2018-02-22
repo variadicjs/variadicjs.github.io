@@ -18,6 +18,7 @@ class CardList extends Component {
 
   handleDropdownChange(value){
     let i = this.state.funcNames.indexOf(value);
+    if (i < 0) return;
     eval(`$('.carousel').carousel('set', ${i})`);
   }
 
@@ -59,7 +60,7 @@ class CardList extends Component {
       <div style={flexContainer}>
         <Dropdown
           data={variadic}
-          handleDropdownChange={(value) => this.handleDropdownChange(value)}
+          handleDropdownChange={(e, value) => this.handleDropdownChange(value)}
         />
         <Carousel>
           {funcCards}
