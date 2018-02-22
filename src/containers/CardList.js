@@ -10,7 +10,7 @@ class CardList extends Component {
       funcNames: {},
       currentFunc: ""
     };
-    
+
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -23,10 +23,10 @@ class CardList extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
- 
+
     if(this.props.dropdownSelection !== prevProps.dropdownSelection){
 
-      let newArr = this.state.funcNames.filter(e => 
+      let newArr = this.state.funcNames.filter(e =>
         e !== this.props.dropdownSelection
       );
 
@@ -50,14 +50,12 @@ class CardList extends Component {
     } = this.state;
 
     const {
-      version,
       variadic
     } = this.props;
 
     let funcCards = funcNames.map((funcName, i) => (
       <div key={i} style={{width: "400px"}}>
         <FuncCard
-          version={version}
           funcName={funcName}
           func={variadic[funcName]}
           subtitle={subtitle}
