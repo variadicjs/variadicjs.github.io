@@ -67,12 +67,25 @@ class FuncCard extends Component {
       code,
       showCode
     } = this.state;
+   
+    const matches = this.state.code.match(/@author+\s\w*/);
+    const authors = [];
+    
+    if(matches) {
+      for(const match of matches){
+        authors.push(match.split(' ')[1]);
+      }
+    }
 
     return (
       <Card
         className="custom-card"
         title={funcName}>
         <p style={{color: "#7D7D7D", marginBottom: "10px"}}>{subtitle}</p>
+        {/* TODO: COULD BE MULTIPLE AUTHORS */}
+        <a href={`https://github.com/${authors[0]}`} style={{height: "50px", width: "50px", display: "block"}}>        
+          <img style={{borderRadius: "50%"}} src={`https://github.com/${authors[0]}.png`} alt="boohoo" className="img-responsive"/>
+        </a>
         <FuncParams
             funcName={funcName}
             params={params}
@@ -88,7 +101,6 @@ class FuncCard extends Component {
         />
 
         <Button onClick={this.handleRunCode}>Run</Button>
-
         <Modal
           style={{width: "70%"}}
           header={`variadic.${funcName}()`}
@@ -97,6 +109,7 @@ class FuncCard extends Component {
         >
           <FuncCode code={code}/>
         </Modal>
+
       </Card>
     )
   }
