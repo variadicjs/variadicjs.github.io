@@ -3,8 +3,9 @@ import "./FuncCard.css";
 import FuncParams from './FuncParams';
 import Highlight from 'react-syntax-highlight';
 import 'highlight.js/styles/atom-one-light.css';
-import {Card, Button, Modal} from "react-materialize";
+import {Card, Button, Modal } from "react-materialize";
 import { version } from 'variadic.js/package.json';
+import Avatar from "./Avatar";
 
 class FuncCard extends Component {
   constructor(props) {
@@ -67,6 +68,13 @@ class FuncCard extends Component {
       code,
       showCode
     } = this.state;
+
+    const avatarPosition = {
+      height: "30px", 
+      width: "30px", 
+      display: "block",
+      marginTop: "18px"
+    }
    
     const matches = this.state.code.match(/@author+\s\w*/);
     const authors = [];
@@ -82,12 +90,9 @@ class FuncCard extends Component {
     return (
       <Card
         className="custom-card"
-        title={funcName}>
+        title={funcName}
+      >
         <p style={{color: "#7D7D7D", marginBottom: "10px"}}>{subtitle}</p>
-        {/* TODO: COULD BE MULTIPLE AUTHORS */}
-        <a href={`https://github.com/${authors[0]}`} style={{height: "50px", width: "50px", display: "block"}}>        
-          <img style={{borderRadius: "50%"}} src={`https://github.com/${authors[0]}.png`} alt="boohoo" className="img-responsive"/>
-        </a>
         <FuncParams
             funcName={funcName}
             params={params}
@@ -107,7 +112,9 @@ class FuncCard extends Component {
         >
           <Highlight lang="js" value={code} />
         </Modal>
-
+        <div style={avatarPosition}>
+          <Avatar authors={authors[0]} />
+        </div>
       </Card>
     )
   }
