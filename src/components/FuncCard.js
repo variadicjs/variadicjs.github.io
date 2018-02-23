@@ -113,7 +113,11 @@ class FuncCard extends Component {
           <Highlight lang="js" value={code} />
         </Modal>
         <div style={avatarPosition}>
-          <Avatar authors={authors[0]} />
+          <Avatar 
+            src={`https://github.com/${authors[0]}.png`}
+            href={`https://github.com/${authors[0]}`} 
+            alt={"boohoo"}
+          />
         </div>
       </Card>
     )
