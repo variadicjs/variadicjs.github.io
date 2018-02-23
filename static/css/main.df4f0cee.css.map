@@ -1,1 +1,0 @@
-{"version":3,"sources":["components/Cards.css"],"names":[],"mappings":"AAAA,aACI,UACA,gBACA,WAAa","file":"static/css/main.df4f0cee.css","sourcesContent":[".custom-card {\n    width: 30%;\n    min-width: 300px;\n    margin: 10px;\n}\n\n\n// WEBPACK FOOTER //\n// ./src/components/Cards.css"],"sourceRoot":""}
