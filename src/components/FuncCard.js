@@ -5,7 +5,7 @@ import Highlight from 'react-syntax-highlight';
 import 'highlight.js/styles/atom-one-light.css';
 import {Card, Button, Modal } from "react-materialize";
 import { version } from 'variadic.js/package.json';
-import Avatar from "./Avatar";
+import AuthorList from "./AuthorList";
 
 class FuncCard extends Component {
   constructor(props) {
@@ -69,16 +69,9 @@ class FuncCard extends Component {
       showCode
     } = this.state;
 
-    const avatarPosition = {
-      height: "30px", 
-      width: "30px", 
-      display: "block",
-      marginTop: "18px"
-    }
-   
-    const matches = this.state.code.match(/@author+\s\w*/);
+    const matches = this.state.code.match(/@author+\s\w*/g);
     const authors = [];
-    
+
     if(matches) {
       for(const match of matches){
         authors.push(match.split(' ')[1]);
@@ -112,13 +105,7 @@ class FuncCard extends Component {
         >
           <Highlight lang="js" value={code} />
         </Modal>
-        <div style={avatarPosition}>
-          <Avatar 
-            src={`https://github.com/${authors[0]}.png`}
-            href={`https://github.com/${authors[0]}`} 
-            alt={"boohoo"}
-          />
-        </div>
+        <AuthorList authors={authors}/>
       </Card>
     )
   }
