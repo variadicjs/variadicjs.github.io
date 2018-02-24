@@ -5,7 +5,6 @@ import Highlight from 'react-syntax-highlight';
 import 'highlight.js/styles/atom-one-light.css';
 import {Card, Button, Modal } from "react-materialize";
 import { version } from 'variadic.js/package.json';
-import Avatar from "./Avatar";
 import AuthorList from "./AuthorList";
 
 class FuncCard extends Component {
