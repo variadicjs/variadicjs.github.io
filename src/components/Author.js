@@ -1,4 +1,5 @@
 import React from 'react';
+import Avatar from "./Avatar"
 
 const Author = (props) => {
   const src = `https://github.com/${props.author}.png`;
@@ -12,7 +13,7 @@ const Author = (props) => {
 
   return (
     <a style={style} href={href}>
-      <img style={{borderRadius: "50%"}} src={src} alt={props.author} className="img-responsive"/>
+      <Avatar src={src} alt={props.author} />
     </a>
   );
 };
