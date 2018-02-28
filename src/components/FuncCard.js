@@ -85,7 +85,7 @@ class FuncCard extends Component {
         className="custom-card"
         title={funcName}
       >
-        <p style={{color: "#7D7D7D", marginBottom: "10px"}}>{subtitle}</p>
+        <p className="p-style">{subtitle}</p>
         <FuncParams
             funcName={funcName}
             params={params}
@@ -98,7 +98,7 @@ class FuncCard extends Component {
 
         <Button onClick={this.handleRunCode}>Run</Button>
         <Modal
-          style={{width: "70%"}}
+          className="modal-width"
           header={`variadic.${funcName}()`}
           open={showCode}
           trigger={<Button onClick={this.handleToggleCode} className="button">Show Code</Button>}

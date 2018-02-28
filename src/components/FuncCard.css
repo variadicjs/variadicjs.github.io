@@ -1,7 +1,6 @@
 .custom-card {
-    width: 40%;
-    min-width: 300px;
-    margin: 10px;
+    width: 350px;
+    margin: 25px;
     text-align: center;
 }
 
@@ -18,4 +17,13 @@
 
 .carousel {
 	height: 500px;
+}
+
+.p-style {
+	color: #7D7D7D;
+	margin-bottom: 10px;
+}
+
+.modal-width {
+	width: 70%;
 }

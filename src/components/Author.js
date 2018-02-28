@@ -10,10 +10,13 @@ const Author = (props) => {
     display: "inline-block",
     marginTop: "18px"
   }
+  const avatarStyle = {
+    borderRadius: "50%"
+  }
 
   return (
     <a style={style} href={href}>
-      <Avatar src={src} alt={props.author} />
+      <Avatar style={avatarStyle} src={src} alt={props.author} />
     </a>
   );
 };
