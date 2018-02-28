@@ -2,10 +2,10 @@ import React from 'react';
 
 const Avatar = (props) => (
     <img 
-    	style={{borderRadius: "50%"}} 
+    	style={props.style} 
     	src={props.src} 
-    	alt={props.alt} c
-    	lassName="img-responsive"
+    	alt={props.alt} 
+    	className="img-responsive"
     />
 );
 
