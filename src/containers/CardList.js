@@ -16,6 +16,7 @@ class CardList extends Component {
   handleDropdownChange(value){
     let i = this.state.funcNames.indexOf(value);
     if (i < 0) return;
+    // eslint-disable-next-line
     eval(`$('.carousel').carousel('set', ${i})`);
   }
 
