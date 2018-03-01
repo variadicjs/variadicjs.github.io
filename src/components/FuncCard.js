@@ -69,7 +69,7 @@ class FuncCard extends Component {
       showCode
     } = this.state;
 
-    const matches = this.state.code.match(/@author+\s\w*/g);
+    const matches = this.state.code.match(/@author+\s[\w, -]*/g);
     const authors = [];
 
     if(matches) {
