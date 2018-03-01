@@ -10,24 +10,18 @@ class CardList extends Component {
     this.state = {
       subtitle: "Type numbers to test function",
       funcNames: {},
-      currentFunc: ""
     };
-
-    this.handleClick = this.handleClick.bind(this);
   }
 
   handleDropdownChange(value){
     let i = this.state.funcNames.indexOf(value);
     if (i < 0) return;
+    // eslint-disable-next-line
     eval(`$('.carousel').carousel('set', ${i})`);
   }
 
   componentWillMount(){
     this.setState({funcNames: Object.keys(variadic)})
-  }
-
-  handleClick(func, e) {
-    this.setState({currentFunc: func})
   }
 
   render() {
@@ -41,7 +35,6 @@ class CardList extends Component {
     const {
       subtitle,
       funcNames,
-      currentFunc
     } = this.state;
 
     let funcCards = funcNames.map((funcName, i) => (
@@ -50,8 +43,6 @@ class CardList extends Component {
           funcName={funcName}
           func={variadic[funcName]}
           subtitle={subtitle}
-          onClickHandler={this.handleClick}
-          currentFunc={currentFunc}
         />
       </div>
     ));
