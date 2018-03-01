@@ -40,7 +40,6 @@ class FuncCard extends Component {
   }
 
   handleRunCode(e) {
-    let funcName = this.props.funcName;
     let params = this.state.params;
     try {
       let result = this.props.func(...params);
@@ -49,7 +48,6 @@ class FuncCard extends Component {
     catch(err) {
       this.setState({result: '', error: err.message})
     }
-    this.props.onClickHandler(funcName);
   }
 
   handleToggleCode(e) {

@@ -10,10 +10,7 @@ class CardList extends Component {
     this.state = {
       subtitle: "Type numbers to test function",
       funcNames: {},
-      currentFunc: ""
     };
-
-    this.handleClick = this.handleClick.bind(this);
   }
 
   handleDropdownChange(value){
@@ -24,10 +21,6 @@ class CardList extends Component {
 
   componentWillMount(){
     this.setState({funcNames: Object.keys(variadic)})
-  }
-
-  handleClick(func, e) {
-    this.setState({currentFunc: func})
   }
 
   render() {
@@ -41,7 +34,6 @@ class CardList extends Component {
     const {
       subtitle,
       funcNames,
-      currentFunc
     } = this.state;
 
     let funcCards = funcNames.map((funcName, i) => (
@@ -50,8 +42,6 @@ class CardList extends Component {
           funcName={funcName}
           func={variadic[funcName]}
           subtitle={subtitle}
-          onClickHandler={this.handleClick}
-          currentFunc={currentFunc}
         />
       </div>
     ));
