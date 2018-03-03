@@ -3,12 +3,11 @@ import {Autocomplete} from 'react-materialize';
 
 const Dropdown = (props) => {
   const s = {
-    width: "30%",
+    width: "35%",
     minWidth: "300px",
     zIndex: "99",
     position: "fixed",
     marginTop: "20px",
-    marginLeft: "20px"
   }
 
   const {data} = props;
