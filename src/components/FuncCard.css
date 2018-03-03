@@ -2,6 +2,7 @@
     width: 350px;
     margin: 25px;
     text-align: center;
+    box-shadow: 0 0 5px 1px grey;
 }
 
 .text-field {
