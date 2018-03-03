@@ -1,6 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import Author from './Author';
+import Avatar from './Avatar';
 
 //  GitHub username
 const author = 'mradenovic';
@@ -12,11 +13,11 @@ describe('<Author />', () => {
     const wrapper = shallow(<Author author={author}/>);
   });
 
-  it('contains GitHub image of the author', () => {
+  it('contains Avatar of the author', () => {
     const wrapper = shallow(<Author author={author}/>);
-    const img = wrapper.find('img');
-    expect(img).toBeDefined();
-    expect(img.prop('src')).toEqual(src);
+    const avatar = wrapper.find(Avatar);
+    expect(avatar).toBeDefined();
+    expect(avatar.props().src).toEqual(src);
   });
 
   it('contains GitHub link of the author', () => {
