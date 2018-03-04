@@ -27,7 +27,6 @@ class CardList extends Component {
   render() {
     const flexContainer = {
       marginTop: "30px",
-      marginBottom: "100px",
       display: "flex",
       justifyContent: "center",
       flexWrap: "wrap"
