@@ -27,7 +27,7 @@ class FuncParams extends Component {
   render() {
     const {funcName, error} = this.props;
     const {value} = this.state;
-
+    
     return(
       <form onSubmit={this.handleParamSubmit}>
         <Input
@@ -35,7 +35,7 @@ class FuncParams extends Component {
           id={`${funcName}-input`}
           type="number"
           step="0.01"
-          placeholder="Enter number and hit RETURN"
+          label="Enter number and hit RETURN"
           error={error}
           onChange={this.handleInputChange}
         />
