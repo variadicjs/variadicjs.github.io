@@ -35,10 +35,10 @@ class FuncParams extends Component {
           id={`${funcName}-input`}
           type="number"
           step="0.01"
-          placeholder="Enter number and hit RETURN"
-          error={error}
+          label="Enter number and hit RETURN"
           onChange={this.handleInputChange}
         />
+        <p style={{color: 'red'}}>{error}</p>
       </form>
     );
   }
