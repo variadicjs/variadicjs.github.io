@@ -47,10 +47,13 @@ class CardList extends Component {
       </div>
     ));
 
+    const data = {};
+    funcNames.forEach(funcName => data[funcName] = null);
+
     return (
       <div style={flexContainer}>
         <Dropdown
-          data={variadic}
+          data={data}
           handleDropdownChange={(e, value) => this.handleDropdownChange(value)}
         />
         <Carousel>
