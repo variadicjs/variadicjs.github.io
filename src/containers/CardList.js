@@ -56,9 +56,8 @@ class CardList extends Component {
           data={data}
           handleDropdownChange={(e, value) => this.handleDropdownChange(value)}
         />
-        <Carousel>
-          {funcCards}
-        </Carousel>
+        <Carousel children={funcCards} />
+       
       </div>
     );
   }
