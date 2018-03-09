@@ -24,3 +24,29 @@
 .modal-width {
 	width: 70%;
 }
+
+.small-btn {
+	height: 25px;
+	width: 25px;
+	position: absolute;
+	top: 183px;
+	left: 11px;
+	opacity: .3;
+}
+
+.small-btn i {
+	position: relative;
+	bottom: 7px;
+	font-size: 18px;
+}
+
+pre {
+	width: 100%;
+	margin-left: 2px;
+}
+
+.results-div {
+	display: flex;
+	width: 340px;
+	margin-left: -20px;
+}
