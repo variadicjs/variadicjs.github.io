@@ -21,7 +21,7 @@ class FuncCard extends Component {
     this.handleToggleCode = this.handleToggleCode.bind(this);
     this.handleParamsChange = this.handleParamsChange.bind(this);
     this.handleRunCode = this.handleRunCode.bind(this);
-    this.handleClearCode = this.handleClearCode.bind(this);
+    this.handleClearParams = this.handleClearParams.bind(this);
   }
 
   componentDidMount() {
@@ -55,7 +55,7 @@ class FuncCard extends Component {
     this.setState(prevState => ({showCode: !prevState.showCode}));
   }
 
-  handleClearCode() {
+  handleClearParams() {
     this.setState({params: [], result: "", error: ""})
   }
 
@@ -97,7 +97,14 @@ class FuncCard extends Component {
             onSubmit={this.handleParamSubmit}
         />
         <div className="results-div">
-          <Button floating className='grey darken-3 small-btn' waves='light' icon='clear' onClick={this.handleClearCode}>Clear</Button>
+          <Button 
+            floating 
+            disabled={params.length === 0 && !result} 
+            className='grey darken-3 small-btn' 
+            waves='light' 
+            icon='clear' 
+            onClick={this.handleClearParams} 
+          />
           <Highlight lang="js" value={callCode} />
         </div>
         <Button onClick={this.handleRunCode}>Run</Button>
@@ -107,7 +114,6 @@ class FuncCard extends Component {
           open={showCode}
           trigger={<Button onClick={this.handleToggleCode} className="button">Show Code</Button>}
         >
-       
           <Highlight lang="js" value={code} />
         </Modal>
         <AuthorList authors={authors}/>
