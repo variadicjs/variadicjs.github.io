@@ -21,6 +21,7 @@ class FuncCard extends Component {
     this.handleToggleCode = this.handleToggleCode.bind(this);
     this.handleParamsChange = this.handleParamsChange.bind(this);
     this.handleRunCode = this.handleRunCode.bind(this);
+    this.handleClearParams = this.handleClearParams.bind(this);
   }
 
   componentDidMount() {
@@ -52,6 +53,10 @@ class FuncCard extends Component {
 
   handleToggleCode(e) {
     this.setState(prevState => ({showCode: !prevState.showCode}));
+  }
+
+  handleClearParams() {
+    this.setState({params: [], result: "", error: ""})
   }
 
   render() {
@@ -91,9 +96,17 @@ class FuncCard extends Component {
             onParamsChange={this.handleParamsChange}
             onSubmit={this.handleParamSubmit}
         />
-
-        <Highlight lang="js" value={callCode} />
-
+        <div className="results-div">
+          <Button 
+            floating 
+            disabled={params.length === 0 && !result} 
+            className='grey darken-3 small-btn' 
+            waves='light' 
+            icon='clear' 
+            onClick={this.handleClearParams} 
+          />
+          <Highlight lang="js" value={callCode} />
+        </div>
         <Button onClick={this.handleRunCode}>Run</Button>
         <Modal
           className="modal-width"
