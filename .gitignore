@@ -15,6 +15,7 @@ manifest.json
 service-worker.js
 favicon.ico
 index.html
+server.js
 
 coverage/
 flow-coverage/
