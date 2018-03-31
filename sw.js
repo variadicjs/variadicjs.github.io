@@ -2,7 +2,7 @@ self.addEventListener("install", event => {
   var urlsToCache = [
     "/",
     //If in production - must update with latest build
-    "/static/js/main.4ffdec84.js",
+    "/static/js/main.2f7b3d96.js",
     "/static/css/main.cdafd870.css",
     "/images/logo.svg",
     "/index.html" 
