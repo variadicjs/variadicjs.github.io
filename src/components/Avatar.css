@@ -1,0 +1,16 @@
+.small-avatar {
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    margin-top: 18px;
+}
+
+.round-avatar {
+    border-radius: 50%;
+}
+
+.large-avatar {
+	height: 100%;
+    width: 100%;
+/*    display: inline-block;*/
+}
