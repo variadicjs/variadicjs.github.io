@@ -12,6 +12,7 @@
 .large-avatar {
 	height: 70px;
     width: 70px;
+    margin-left: -15px;
 }
 
 html {
@@ -23,7 +24,7 @@ html {
 }
 
 @media screen and (max-width: 1000px) {
-	a {
+	 .navbar-style a {
 		margin-bottom: 20px;
 	}
 }

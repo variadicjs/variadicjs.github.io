@@ -27,25 +27,28 @@ const NavBar = () => (
       </NavItem>
     }>
       <NavItem>
-        <Avatar 
-          className="large-avatar round-avatar" 
-          href="https://github.com/amr08" 
-          src="https://github.com/amr08.png" 
-        />
+        <a href="https://github.com/amr08">
+          <Avatar 
+            className="large-avatar round-avatar" 
+            src="https://github.com/amr08.png" 
+          />
+        </a>
       </NavItem>
       <NavItem>
-        <Avatar 
-          className="large-avatar round-avatar" 
-          href="https://github.com/jhowardjr" 
-          src="https://github.com/jhowardjr.png" 
-        />
+        <a href="https://github.com/jhowardjr">
+          <Avatar 
+            className="large-avatar round-avatar" 
+            src="https://github.com/jhowardjr.png" 
+          />
+        </a>
       </NavItem>
       <NavItem>
-        <Avatar 
-          className="large-avatar round-avatar" 
-          href="https://github.com/mradenovic" 
-          src="https://github.com/mradenovic.png" 
-        />
+        <a href="https://github.com/mradenovic">
+          <Avatar 
+            className="large-avatar round-avatar"  
+            src="https://github.com/mradenovic.png" 
+          />
+        </a>
       </NavItem>
     </Dropdown>  
   </Navbar>
