@@ -14,3 +14,16 @@
     width: 70px;
 }
 
+html {
+	box-sizing: content-box;
+}
+
+#space-right {
+	margin-right: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+	a {
+		margin-bottom: 20px;
+	}
+}

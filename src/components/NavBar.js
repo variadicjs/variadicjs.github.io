@@ -22,7 +22,7 @@ const NavBar = () => (
   >
       
     <Dropdown trigger={
-      <NavItem>
+      <NavItem id="space-right">
         <Icon medium>people</Icon>
       </NavItem>
     }>
