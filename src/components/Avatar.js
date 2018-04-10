@@ -5,7 +5,7 @@ const Avatar = (props) => (
     	style={props.style} 
     	src={props.src} 
     	alt={props.alt} 
-    	className="img-responsive"
+    	className={props.className}
     />
 );
 

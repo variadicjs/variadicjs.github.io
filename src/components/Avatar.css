@@ -1,0 +1,30 @@
+.small-avatar {
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    margin-top: 18px;
+}
+
+.round-avatar {
+    border-radius: 50%;
+}
+
+.large-avatar {
+	height: 70px;
+    width: 70px;
+    margin-left: -15px;
+}
+
+html {
+	box-sizing: content-box;
+}
+
+#space-right {
+	margin-right: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+	 .navbar-style a {
+		margin-bottom: 20px;
+	}
+}

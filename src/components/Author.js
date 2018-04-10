@@ -1,22 +1,14 @@
 import React from 'react';
-import Avatar from "./Avatar"
+import Avatar from "./Avatar";
+import "./Avatar.css";
 
 const Author = (props) => {
   const src = `https://github.com/${props.author}.png`;
   const href = `https://github.com/${props.author}`;
-  const style = {
-    height: "30px",
-    width: "30px",
-    display: "inline-block",
-    marginTop: "18px"
-  }
-  const avatarStyle = {
-    borderRadius: "50%"
-  }
 
   return (
-    <a style={style} href={href}>
-      <Avatar style={avatarStyle} src={src} alt={props.author} />
+    <a className="small-avatar" href={href}>
+      <Avatar className="round-avatar" src={src} alt={props.author} />
     </a>
   );
 };
